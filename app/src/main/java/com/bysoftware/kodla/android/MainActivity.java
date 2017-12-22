@@ -1,13 +1,9 @@
 package com.bysoftware.kodla.android;
 
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Pair;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.Toast;
 
 import com.nightonke.boommenu.BoomButtons.ButtonPlaceEnum;
 import com.nightonke.boommenu.BoomButtons.OnBMClickListener;
@@ -15,8 +11,6 @@ import com.nightonke.boommenu.BoomButtons.SimpleCircleButton;
 import com.nightonke.boommenu.BoomMenuButton;
 import com.nightonke.boommenu.ButtonEnum;
 import com.nightonke.boommenu.Piece.PiecePlaceEnum;
-
-import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -43,6 +37,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        GithubFragment fragment = new GithubFragment();
+        transaction.replace(R.id.fragment_container, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+
         assert bmb != null;
         bmb.setButtonEnum(ButtonEnum.SimpleCircle);
         bmb.setPiecePlaceEnum(PiecePlaceEnum.DOT_6_4);
@@ -59,21 +60,60 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onBoomButtonClick(int index) {
                 if (index == 0) {
-                    Toast.makeText(MainActivity.this, "GitHub", Toast.LENGTH_SHORT).show();
+                    FragmentManager manager = getSupportFragmentManager();
+                    FragmentTransaction transaction = manager.beginTransaction();
+                    GithubFragment fragment = new GithubFragment();
+                    transaction.replace(R.id.fragment_container, fragment);
+                    transaction.addToBackStack(null);
+                    transaction.commit();
                 } else if (index == 1) {
-                    Toast.makeText(MainActivity.this, "Java", Toast.LENGTH_SHORT).show();
+                    FragmentManager manager = getSupportFragmentManager();
+                    FragmentTransaction transaction = manager.beginTransaction();
+                    JavaFragment fragment = new JavaFragment();
+                    transaction.replace(R.id.fragment_container, fragment);
+                    transaction.addToBackStack(null);
+                    transaction.commit();
                 } else if (index == 2) {
-                    Toast.makeText(MainActivity.this, "JavaScript", Toast.LENGTH_SHORT).show();
+                    FragmentManager manager = getSupportFragmentManager();
+                    FragmentTransaction transaction = manager.beginTransaction();
+                    JsFragment fragment = new JsFragment();
+                    transaction.replace(R.id.fragment_container, fragment);
+                    transaction.addToBackStack(null);
+                    transaction.commit();
                 } else if (index == 3) {
-                    Toast.makeText(MainActivity.this, "Kotlin", Toast.LENGTH_SHORT).show();
+                    FragmentManager manager = getSupportFragmentManager();
+                    FragmentTransaction transaction = manager.beginTransaction();
+                    KotlinFragment fragment = new KotlinFragment();
+                    transaction.replace(R.id.fragment_container, fragment);
+                    transaction.addToBackStack(null);
+                    transaction.commit();
                 } else if (index == 4) {
-                    Toast.makeText(MainActivity.this, "Swift", Toast.LENGTH_SHORT).show();
+                    FragmentManager manager = getSupportFragmentManager();
+                    FragmentTransaction transaction = manager.beginTransaction();
+                    SwiftFragment fragment = new SwiftFragment();
+                    transaction.replace(R.id.fragment_container, fragment);
+                    transaction.addToBackStack(null);
+                    transaction.commit();
                 } else if (index == 5) {
-                    Toast.makeText(MainActivity.this, "Android", Toast.LENGTH_SHORT).show();
+                    FragmentManager manager = getSupportFragmentManager();
+                    FragmentTransaction transaction = manager.beginTransaction();
+                    AndroidFragment fragment = new AndroidFragment();
+                    transaction.replace(R.id.fragment_container, fragment);
+                    transaction.addToBackStack(null);
+                    transaction.commit();
                 }
-
             }
         }).normalImageRes(getImageResource());
+    }
+
+    @Override
+    public void onBackPressed() {
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        GithubFragment fragment = new GithubFragment();
+        transaction.replace(R.id.fragment_container, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 
     static int getImageResource() {
