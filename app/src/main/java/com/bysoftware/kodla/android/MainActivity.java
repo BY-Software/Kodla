@@ -1,5 +1,6 @@
 package com.bysoftware.kodla.android;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -37,12 +38,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        FragmentManager manager = getSupportFragmentManager();
-        FragmentTransaction transaction = manager.beginTransaction();
-        GithubFragment fragment = new GithubFragment();
-        transaction.replace(R.id.fragment_container, fragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
+        getFragment("github");
 
         assert bmb != null;
         bmb.setButtonEnum(ButtonEnum.SimpleCircle);
@@ -51,7 +47,9 @@ public class MainActivity extends AppCompatActivity {
         bmb.addBuilder(getSimpleCircleButtonBuilder());
         bmb.clearBuilders();
         for (int i = 0; i < bmb.getPiecePlaceEnum().pieceNumber(); i++) {
-            bmb.addBuilder(getSimpleCircleButtonBuilder());
+            bmb.addBuilder(getSimpleCircleButtonBuilder()
+                    .normalColor(Color.WHITE)
+            );
         }
     }
 
@@ -60,47 +58,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onBoomButtonClick(int index) {
                 if (index == 0) {
-                    FragmentManager manager = getSupportFragmentManager();
-                    FragmentTransaction transaction = manager.beginTransaction();
-                    GithubFragment fragment = new GithubFragment();
-                    transaction.replace(R.id.fragment_container, fragment);
-                    transaction.addToBackStack(null);
-                    transaction.commit();
+                    getFragment("github");
                 } else if (index == 1) {
-                    FragmentManager manager = getSupportFragmentManager();
-                    FragmentTransaction transaction = manager.beginTransaction();
-                    JavaFragment fragment = new JavaFragment();
-                    transaction.replace(R.id.fragment_container, fragment);
-                    transaction.addToBackStack(null);
-                    transaction.commit();
+                    getFragment("java");
                 } else if (index == 2) {
-                    FragmentManager manager = getSupportFragmentManager();
-                    FragmentTransaction transaction = manager.beginTransaction();
-                    JsFragment fragment = new JsFragment();
-                    transaction.replace(R.id.fragment_container, fragment);
-                    transaction.addToBackStack(null);
-                    transaction.commit();
+                    getFragment("js");
                 } else if (index == 3) {
-                    FragmentManager manager = getSupportFragmentManager();
-                    FragmentTransaction transaction = manager.beginTransaction();
-                    KotlinFragment fragment = new KotlinFragment();
-                    transaction.replace(R.id.fragment_container, fragment);
-                    transaction.addToBackStack(null);
-                    transaction.commit();
+                    getFragment("kotlin");
                 } else if (index == 4) {
-                    FragmentManager manager = getSupportFragmentManager();
-                    FragmentTransaction transaction = manager.beginTransaction();
-                    SwiftFragment fragment = new SwiftFragment();
-                    transaction.replace(R.id.fragment_container, fragment);
-                    transaction.addToBackStack(null);
-                    transaction.commit();
+                    getFragment("swift");
                 } else if (index == 5) {
-                    FragmentManager manager = getSupportFragmentManager();
-                    FragmentTransaction transaction = manager.beginTransaction();
-                    AndroidFragment fragment = new AndroidFragment();
-                    transaction.replace(R.id.fragment_container, fragment);
-                    transaction.addToBackStack(null);
-                    transaction.commit();
+                    getFragment("android");
                 }
             }
         }).normalImageRes(getImageResource());
@@ -108,16 +76,37 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        FragmentManager manager = getSupportFragmentManager();
-        FragmentTransaction transaction = manager.beginTransaction();
-        GithubFragment fragment = new GithubFragment();
-        transaction.replace(R.id.fragment_container, fragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
+        getFragment("github");
     }
 
     static int getImageResource() {
         if (imageResourceIndex >= imageResources.length) imageResourceIndex = 0;
         return imageResources[imageResourceIndex++];
+    }
+
+    private void getFragment(String stringFragment){
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        if(stringFragment.equalsIgnoreCase("github")){
+            GithubFragment fragment = new GithubFragment();
+            transaction.replace(R.id.fragment_container, fragment);
+        }else if(stringFragment.equalsIgnoreCase("java")){
+            JavaFragment fragment = new JavaFragment();
+            transaction.replace(R.id.fragment_container, fragment);
+        }else if(stringFragment.equalsIgnoreCase("js")){
+            JsFragment fragment = new JsFragment();
+            transaction.replace(R.id.fragment_container, fragment);
+        }else if(stringFragment.equalsIgnoreCase("kotlin")){
+            KotlinFragment fragment = new KotlinFragment();
+            transaction.replace(R.id.fragment_container, fragment);
+        }else if(stringFragment.equalsIgnoreCase("swift")){
+            SwiftFragment fragment = new SwiftFragment();
+            transaction.replace(R.id.fragment_container, fragment);
+        }else if(stringFragment.equalsIgnoreCase("android")){
+            AndroidFragment fragment = new AndroidFragment();
+            transaction.replace(R.id.fragment_container, fragment);
+        }
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 }
