@@ -12,6 +12,7 @@ import com.bysoftware.kodla.android.view.fragment.GithubFragment;
 import com.bysoftware.kodla.android.view.fragment.JavaFragment;
 import com.bysoftware.kodla.android.view.fragment.JsFragment;
 import com.bysoftware.kodla.android.view.fragment.KotlinFragment;
+import com.bysoftware.kodla.android.view.fragment.MainFragment;
 import com.bysoftware.kodla.android.view.fragment.SwiftFragment;
 import com.nightonke.boommenu.BoomButtons.ButtonPlaceEnum;
 import com.nightonke.boommenu.BoomButtons.OnBMClickListener;
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        getFragment("github");
+        getFragment("main");
 
         assert bmb != null;
         bmb.setButtonEnum(ButtonEnum.SimpleCircle);
@@ -76,6 +77,8 @@ public class MainActivity extends AppCompatActivity {
                     getFragment("swift");
                 } else if (index == 5) {
                     getFragment("android");
+                } else if (index == 6) {
+                    getFragment("main");
                 }
             }
         }).normalImageRes(getImageResource());
@@ -111,6 +114,9 @@ public class MainActivity extends AppCompatActivity {
             transaction.replace(R.id.fragment_container, fragment);
         }else if(stringFragment.equalsIgnoreCase("android")){
             AndroidFragment fragment = new AndroidFragment();
+            transaction.replace(R.id.fragment_container, fragment);
+        } else if(stringFragment.equalsIgnoreCase("main")){
+            MainFragment fragment = new MainFragment();
             transaction.replace(R.id.fragment_container, fragment);
         }
         transaction.addToBackStack(null);
