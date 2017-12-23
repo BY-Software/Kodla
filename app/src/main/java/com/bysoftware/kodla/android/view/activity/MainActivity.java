@@ -1,4 +1,4 @@
-package com.bysoftware.kodla.android;
+package com.bysoftware.kodla.android.view.activity;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -6,6 +6,13 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
+import com.bysoftware.kodla.android.R;
+import com.bysoftware.kodla.android.view.fragment.AndroidFragment;
+import com.bysoftware.kodla.android.view.fragment.GithubFragment;
+import com.bysoftware.kodla.android.view.fragment.JavaFragment;
+import com.bysoftware.kodla.android.view.fragment.JsFragment;
+import com.bysoftware.kodla.android.view.fragment.KotlinFragment;
+import com.bysoftware.kodla.android.view.fragment.SwiftFragment;
 import com.nightonke.boommenu.BoomButtons.ButtonPlaceEnum;
 import com.nightonke.boommenu.BoomButtons.OnBMClickListener;
 import com.nightonke.boommenu.BoomButtons.SimpleCircleButton;

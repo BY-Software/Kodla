@@ -1,10 +1,12 @@
-package com.bysoftware.kodla.android;
+package com.bysoftware.kodla.android.view.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.bysoftware.kodla.android.R;
 
 public class JavaFragment extends Fragment {
     @Override
