@@ -1,10 +1,13 @@
 package com.bysoftware.kodla.android.view.activity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Toast;
 
 import com.bysoftware.kodla.android.R;
 import com.bysoftware.kodla.android.view.fragment.AndroidFragment;
@@ -65,28 +68,125 @@ public class MainActivity extends AppCompatActivity {
         return new SimpleCircleButton.Builder().listener(new OnBMClickListener() {
             @Override
             public void onBoomButtonClick(int index) {
+                int i = (int)(Math.random()*4+1);
                 if (index == 0) {
-                    getFragment("github");
+                    createDialog("github", i);
+                    Toast.makeText(MainActivity.this, "GitHub", Toast.LENGTH_SHORT).show();
                 } else if (index == 1) {
-                    getFragment("java");
+                    createDialog("java", i);
+                    Toast.makeText(MainActivity.this, "Java", Toast.LENGTH_SHORT).show();
                 } else if (index == 2) {
-                    getFragment("js");
+                    createDialog("js", i);
+                    Toast.makeText(MainActivity.this, "JavaScript", Toast.LENGTH_SHORT).show();
                 } else if (index == 3) {
-                    getFragment("kotlin");
+                    createDialog("kotlin", i);
+                    Toast.makeText(MainActivity.this, "Kotlin", Toast.LENGTH_SHORT).show();
                 } else if (index == 4) {
-                    getFragment("swift");
+                    createDialog("swift", i);
+                    Toast.makeText(MainActivity.this, "Swift", Toast.LENGTH_SHORT).show();
                 } else if (index == 5) {
-                    getFragment("android");
-                } else if (index == 6) {
-                    getFragment("main");
+                    createDialog("android", i);
+                    Toast.makeText(MainActivity.this, "Android", Toast.LENGTH_SHORT).show();
                 }
             }
         }).normalImageRes(getImageResource());
     }
 
+    public void createDialog(String lesson, int tip) {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        if (tip == 1) {
+            if (lesson.equalsIgnoreCase("github")) {
+                alertDialogBuilder.setMessage(R.string.github_tip_1);
+            } else if (lesson.equalsIgnoreCase("java")) {
+                alertDialogBuilder.setMessage(R.string.java_tip_1);
+            } else if (lesson.equalsIgnoreCase("js")) {
+                alertDialogBuilder.setMessage(R.string.js_tip_1);
+            } else if (lesson.equalsIgnoreCase("kotlin")) {
+                alertDialogBuilder.setMessage(R.string.kotlin_tip_1);
+            } else if (lesson.equalsIgnoreCase("swift")) {
+                alertDialogBuilder.setMessage(R.string.swift_tip_1);
+            } else if (lesson.equalsIgnoreCase("android")) {
+                alertDialogBuilder.setMessage(R.string.android_tip_1);
+            }
+        } else if (tip == 2) {
+            if (lesson.equalsIgnoreCase("github")) {
+                alertDialogBuilder.setMessage(R.string.github_tip_2);
+            } else if (lesson.equalsIgnoreCase("java")) {
+                alertDialogBuilder.setMessage(R.string.java_tip_2);
+            } else if (lesson.equalsIgnoreCase("js")) {
+                alertDialogBuilder.setMessage(R.string.js_tip_2);
+            } else if (lesson.equalsIgnoreCase("kotlin")) {
+                alertDialogBuilder.setMessage(R.string.kotlin_tip_2);
+            } else if (lesson.equalsIgnoreCase("swift")) {
+                alertDialogBuilder.setMessage(R.string.swift_tip_2);
+            } else if (lesson.equalsIgnoreCase("android")) {
+                alertDialogBuilder.setMessage(R.string.android_tip_2);
+            }
+        } else if (tip == 3) {
+            if (lesson.equalsIgnoreCase("github")) {
+                alertDialogBuilder.setMessage(R.string.github_tip_3);
+            } else if (lesson.equalsIgnoreCase("java")) {
+                alertDialogBuilder.setMessage(R.string.java_tip_3);
+            } else if (lesson.equalsIgnoreCase("js")) {
+                alertDialogBuilder.setMessage(R.string.js_tip_3);
+            } else if (lesson.equalsIgnoreCase("kotlin")) {
+                alertDialogBuilder.setMessage(R.string.kotlin_tip_3);
+            } else if (lesson.equalsIgnoreCase("swift")) {
+                alertDialogBuilder.setMessage(R.string.swift_tip_3);
+            } else if (lesson.equalsIgnoreCase("android")) {
+                alertDialogBuilder.setMessage(R.string.android_tip_3);
+            }
+        } else if (tip == 4) {
+            if (lesson.equalsIgnoreCase("github")) {
+                alertDialogBuilder.setMessage(R.string.github_tip_4);
+            } else if (lesson.equalsIgnoreCase("java")) {
+                alertDialogBuilder.setMessage(R.string.java_tip_4);
+            } else if (lesson.equalsIgnoreCase("js")) {
+                alertDialogBuilder.setMessage(R.string.js_tip_4);
+            } else if (lesson.equalsIgnoreCase("kotlin")) {
+                alertDialogBuilder.setMessage(R.string.kotlin_tip_4);
+            } else if (lesson.equalsIgnoreCase("swift")) {
+                alertDialogBuilder.setMessage(R.string.swift_tip_4);
+            } else if (lesson.equalsIgnoreCase("android")) {
+                alertDialogBuilder.setMessage(R.string.android_tip_4);
+            }
+        } else if (tip == 5) {
+            if (lesson.equalsIgnoreCase("github")) {
+                alertDialogBuilder.setMessage(R.string.github_tip_5);
+            } else if (lesson.equalsIgnoreCase("java")) {
+                alertDialogBuilder.setMessage(R.string.java_tip_5);
+            } else if (lesson.equalsIgnoreCase("js")) {
+                alertDialogBuilder.setMessage(R.string.js_tip_5);
+            } else if (lesson.equalsIgnoreCase("kotlin")) {
+                alertDialogBuilder.setMessage(R.string.kotlin_tip_5);
+            } else if (lesson.equalsIgnoreCase("swift")) {
+                alertDialogBuilder.setMessage(R.string.swift_tip_5);
+            } else if (lesson.equalsIgnoreCase("android")) {
+                alertDialogBuilder.setMessage(R.string.android_tip_5);
+            }
+        }
+        alertDialogBuilder.setPositiveButton("OK",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface arg0, int arg1) {
+                    }
+                });
+
+        alertDialogBuilder.setNegativeButton("SHARE",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //TODO: Add share function
+                    }
+                });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+    }
+
     @Override
     public void onBackPressed() {
-        getFragment("github");
+        getFragment("main");
     }
 
     static int getImageResource() {
@@ -94,28 +194,28 @@ public class MainActivity extends AppCompatActivity {
         return imageResources[imageResourceIndex++];
     }
 
-    private void getFragment(String stringFragment){
+    private void getFragment(String stringFragment) {
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
-        if(stringFragment.equalsIgnoreCase("github")){
+        if (stringFragment.equalsIgnoreCase("github")) {
             GithubFragment fragment = new GithubFragment();
             transaction.replace(R.id.fragment_container, fragment);
-        }else if(stringFragment.equalsIgnoreCase("java")){
+        } else if (stringFragment.equalsIgnoreCase("java")) {
             JavaFragment fragment = new JavaFragment();
             transaction.replace(R.id.fragment_container, fragment);
-        }else if(stringFragment.equalsIgnoreCase("js")){
+        } else if (stringFragment.equalsIgnoreCase("js")) {
             JsFragment fragment = new JsFragment();
             transaction.replace(R.id.fragment_container, fragment);
-        }else if(stringFragment.equalsIgnoreCase("kotlin")){
+        } else if (stringFragment.equalsIgnoreCase("kotlin")) {
             KotlinFragment fragment = new KotlinFragment();
             transaction.replace(R.id.fragment_container, fragment);
-        }else if(stringFragment.equalsIgnoreCase("swift")){
+        } else if (stringFragment.equalsIgnoreCase("swift")) {
             SwiftFragment fragment = new SwiftFragment();
             transaction.replace(R.id.fragment_container, fragment);
-        }else if(stringFragment.equalsIgnoreCase("android")){
+        } else if (stringFragment.equalsIgnoreCase("android")) {
             AndroidFragment fragment = new AndroidFragment();
             transaction.replace(R.id.fragment_container, fragment);
-        } else if(stringFragment.equalsIgnoreCase("main")){
+        } else if (stringFragment.equalsIgnoreCase("main")) {
             MainFragment fragment = new MainFragment();
             transaction.replace(R.id.fragment_container, fragment);
         }
