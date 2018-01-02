@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
         }).normalImageRes(getImageResource());
     }
 
-    public void createDialog(String lesson, int tip) {
+    public void createDialog(final String lesson, int tip) {
         final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         String message = null;
         if (tip == 1) {
@@ -202,6 +202,7 @@ public class MainActivity extends AppCompatActivity {
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface arg0, int arg1) {
+
                     }
                 });
         final String mes = message;
@@ -216,6 +217,26 @@ public class MainActivity extends AppCompatActivity {
                         sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, mes);
                         startActivity(Intent.createChooser(sharingIntent, "Share via"));
 
+                    }
+                });
+
+        alertDialogBuilder.setNeutralButton("GET ALL TIPS",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        if (lesson.equalsIgnoreCase("github")) {
+                            getFragment("github");
+                        } else if (lesson.equalsIgnoreCase("java")) {
+                            getFragment("java");
+                        } else if (lesson.equalsIgnoreCase("js")) {
+                            getFragment("js");
+                        } else if (lesson.equalsIgnoreCase("kotlin")) {
+                            getFragment("kotlin");
+                        } else if (lesson.equalsIgnoreCase("swift")) {
+                            getFragment("swift");
+                        } else if (lesson.equalsIgnoreCase("android")) {
+                            getFragment("android");
+                        }
                     }
                 });
 
